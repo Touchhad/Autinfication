@@ -1,6 +1,7 @@
 package com.example.autinfication;
 
 
+import com.example.autinfication.Service.GetMovieId;
 import com.example.autinfication.Service.LoginService;
 import com.example.autinfication.Service.RegisterService;
 import com.google.gson.Gson;
@@ -41,6 +42,10 @@ public class ApiClient {
     public static RegisterService getRegister(){
         RegisterService registerService = getRetrofit().create(RegisterService.class);
         return registerService;
+    }
+    public static GetMovieId getMovieId(){
+        GetMovieId getMovieId = getRetrofit().create(GetMovieId.class);
+        return getMovieId;
     }
 
 }

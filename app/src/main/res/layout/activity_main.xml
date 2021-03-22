@@ -7,61 +7,40 @@
     android:background="#1C1C1C"
     tools:context=".Activity.LoginActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView1"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView1">
-
-        <Button
-            android:id="@+id/btn_new"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClick"
-            android:text="Newest"
-            android:textColor="@color/black" />
-
-        <Button
-            android:id="@+id/btn_trend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClick"
-            android:text="In Trend"
-            android:textColor="@color/black" />
-
-        <Button
-            android:id="@+id/btn_favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:onClick="onClick"
-            android:text="Favorite"
-            android:textColor="@color/black" />
-
-    </LinearLayout>
-
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment"
+        android:id="@+id/fragmentView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
 
+    </androidx.fragment.app.FragmentContainerView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/movie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClickW"
+            android:text="Movie"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClickW"
+            android:text="profile"
+            android:textColor="@color/black" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

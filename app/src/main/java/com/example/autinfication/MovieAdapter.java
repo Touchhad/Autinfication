@@ -49,7 +49,7 @@ ConstraintLayout constraintLayout;
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, MainActivity.class);
+                Intent intent = new Intent(mContext, MovieActivity.class).putExtra("movieId", movie.getMovieId());
                 mContext.startActivity(intent);
             }
         });
