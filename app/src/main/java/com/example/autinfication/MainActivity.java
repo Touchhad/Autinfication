@@ -13,7 +13,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
-import com.example.autinfication.Service.MovieApi;
+import com.example.autinfication.Fragments.Favorite;
+import com.example.autinfication.Fragments.NewFrag;
+import com.example.autinfication.Fragments.Trend;
 import com.example.autinfication.Service.ScrollApi;
 
 import java.io.IOException;
@@ -38,61 +40,29 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-        mProgressBar.setVisibility(View.INVISIBLE);
+
 
         mMovie = new ArrayList<>();
 
 
         mRecyclerView1 = (RecyclerView) findViewById(R.id.recyclerView1) ;
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true);
         mRecyclerView1.setLayoutManager(layoutManager1);
-        mRecyclerView.setLayoutManager(layoutManager);
 
 
-
-
-        MovieAdapter adapter = new MovieAdapter(mMovie);
-        mRecyclerView.setAdapter(adapter);
 
         ScrollAdapter adapter1 = new ScrollAdapter(mMovie);
         mRecyclerView1.setAdapter(adapter1);
 
-        mProgressBar.setVisibility(View.VISIBLE);
 
-        MovieApi movieApi = MovieApi.retrofit.create(MovieApi.class);
-        final Call<List<Movie>> call = movieApi.getData();
-        call.enqueue(new Callback<List<Movie>>() {
-                         @Override
-                         public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
-                             // response.isSuccessfull() возвращает true если код ответа 2xx
-                             if (response.isSuccessful()) {
-                                 mMovie.addAll(response.body());
-                                 mRecyclerView.getAdapter().notifyDataSetChanged();
-                                 mProgressBar.setVisibility(View.INVISIBLE);
-                             } else {
-                                 // Обрабатываем ошибку
-                                 ResponseBody errorBody = response.errorBody();
-                                 try {
-                                     Toast.makeText(MainActivity.this, errorBody.string(),
-                                             Toast.LENGTH_SHORT).show();
-                                     mProgressBar.setVisibility(View.INVISIBLE);
-                                 } catch (IOException e) {
-                                     e.printStackTrace();
-                                 }
-                             }
-                         }
 
-                         @Override
-                         public void onFailure(Call<List<Movie>> call, Throwable throwable) {
-                             Toast.makeText(MainActivity.this, "Что-то пошло не так",
-                                     Toast.LENGTH_SHORT).show();
-                             mProgressBar.setVisibility(View.INVISIBLE);
-                         }
-                     }
-        );
+        if (savedInstanceState == null){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment, Favorite.class,null)
+                    .commit();
+        }
+
+
         ScrollApi scrollApi = ScrollApi.retrofit.create(ScrollApi.class);
         final Call<List<Movie>> call1 = scrollApi.getData();
         call1.enqueue(new Callback<List<Movie>>() {
@@ -102,14 +72,14 @@ public class MainActivity extends AppCompatActivity {
                               if (response.isSuccessful()) {
                                   mMovie.addAll(response.body());
                                   mRecyclerView1.getAdapter().notifyDataSetChanged();
-                                  mProgressBar.setVisibility(View.INVISIBLE);
+
                               } else {
                                   // Обрабатываем ошибку
                                   ResponseBody errorBody = response.errorBody();
                                   try {
                                       Toast.makeText(MainActivity.this, errorBody.string(),
                                               Toast.LENGTH_SHORT).show();
-                                      mProgressBar.setVisibility(View.INVISIBLE);
+
                                   } catch (IOException e) {
                                       e.printStackTrace();
                                   }
@@ -120,9 +90,29 @@ public class MainActivity extends AppCompatActivity {
                           public void onFailure(Call<List<Movie>> call, Throwable throwable) {
                               Toast.makeText(MainActivity.this, "Что-то пошло не так",
                                       Toast.LENGTH_SHORT).show();
-                              mProgressBar.setVisibility(View.INVISIBLE);
+
                           }
                       }
         );
+    }
+
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.btn_favorite:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment, Favorite.class, null)
+                        .commit();
+                break;
+            case R.id.btn_new:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment, NewFrag.class, null)
+                        .commit();
+                break;
+            case R.id.btn_trend:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment, Trend.class, null)
+                        .commit();
+                break;
+        }
     }
 }

@@ -13,13 +13,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-class ScrollAdapter extends RecyclerView.Adapter<ScrollAdapter.ViewHolder> {
+public class ScrollAdapter extends RecyclerView.Adapter<ScrollAdapter.ViewHolder> {
 
     private final static String PHOTO_URL = "http://cinema.areas.su/up/images/";
     private List<Movie> mMovie;
     private Context mContext;
 
-    ScrollAdapter(List<Movie> movies) {
+    public ScrollAdapter(List<Movie> movies) {
         this.mMovie = movies;
     }
 

@@ -3,7 +3,7 @@
     <style name="Theme.Autinfication" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#fff</item>
-        <item name="colorPrimaryVariant">#1C1C1C</item>
+        <item name="colorPrimaryVariant">#ff8000</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#FF8000</item>
