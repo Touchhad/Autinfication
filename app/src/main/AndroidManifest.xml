@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Autinfication"
         android:usesCleartextTraffic="true">
         <activity android:name=".MovieActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".LaunchScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".LaunchScreen" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
     </application>
 

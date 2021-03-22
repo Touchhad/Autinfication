@@ -69,7 +69,7 @@ ConstraintLayout constraintLayout;
         LinearLayout linearLayout;
         TextView Name, Description, TagName;
         ImageView Image;
-        VideoView videoView;
+
 
         ViewHolder(View itemView) {
             super(itemView);
