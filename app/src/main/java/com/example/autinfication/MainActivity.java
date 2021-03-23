@@ -23,26 +23,17 @@ public class MainActivity extends AppCompatActivity {
 
     List<Movie> mMovie;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
 
-
-
-
-
-
         if (savedInstanceState == null){
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragmentView, MainFragment.class,null)
                     .commit();
         }
-
-
-
     }
 
 

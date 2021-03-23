@@ -25,5 +25,7 @@ public interface MovieApi {
         @GET("/movies?filter=inTrend")
         Call<List<Movie>> getDeta();
 
+        @GET("/movies")
+        Call<List<Movie>> getDete();
 
 }

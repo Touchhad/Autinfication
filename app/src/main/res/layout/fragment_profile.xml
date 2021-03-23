@@ -26,9 +26,9 @@
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:src="@tools:sample/avatars" />
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                tools:src="@drawable/ads" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,16 +38,31 @@
                 android:paddingRight="15dp">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tvEmailName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="asd"
+                    android:textColor="@color/black"
+                    android:textSize="36sp" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#7A1C1C1C" />
+
+                <TextView
+                    android:id="@+id/tvFirstName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
 
                 <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tvLastName"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textColor="@color/black" />
             </LinearLayout>
 
         </LinearLayout>
@@ -61,6 +76,6 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:layout_editor_absoluteX="16dp"></LinearLayout>
+        tools:layout_editor_absoluteX="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

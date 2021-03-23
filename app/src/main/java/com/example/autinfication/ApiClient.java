@@ -1,9 +1,13 @@
 package com.example.autinfication;
 
 
+import android.widget.VideoView;
+
 import com.example.autinfication.Service.GetMovieId;
 import com.example.autinfication.Service.LoginService;
 import com.example.autinfication.Service.RegisterService;
+import com.example.autinfication.Service.UserInterface;
+import com.example.autinfication.Service.VideoService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -47,5 +51,12 @@ public class ApiClient {
         GetMovieId getMovieId = getRetrofit().create(GetMovieId.class);
         return getMovieId;
     }
-
+    public static UserInterface getUser(){
+        UserInterface userInterface = getRetrofit().create(UserInterface.class);
+        return userInterface;
+    }
+    public static VideoService getVideo(){
+        VideoService videoService = getRetrofit().create(VideoService.class);
+        return videoService;
+    }
 }

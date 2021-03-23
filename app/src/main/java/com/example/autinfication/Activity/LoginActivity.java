@@ -3,6 +3,7 @@ package com.example.autinfication.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -26,6 +27,9 @@ public class LoginActivity extends AppCompatActivity {
     EditText edEmail, edPass;
     TextView tvReg;
     Button btnLogin;
+    SharedPreferences sPref;
+
+    final String saveg = "key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +71,16 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful()){
+                LoginResponse loginResponse = response.body();
 
-                  String message = "Все ок";
-                    Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
+                sPref = getSharedPreferences("pref", MODE_PRIVATE);
+                SharedPreferences.Editor ed = sPref.edit();
+                int message = loginResponse.getToken();
+                ed.putString(saveg, String.valueOf(message));
+                ed.commit();
+
+
+
                   Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                   startActivity(intent);
                   finish();

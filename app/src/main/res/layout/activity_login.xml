@@ -23,6 +23,7 @@ tools:context=".MainActivity">
             android:ems="10"
             android:hint="E-mail"
             android:inputType="textPersonName"
+            android:text="vasya@mail.com"
             android:textColor="@color/white" />
 
         <EditText
@@ -33,6 +34,7 @@ tools:context=".MainActivity">
             android:ems="10"
             android:hint="Password"
             android:inputType="textPersonName"
+            android:text="qwerty"
             android:textColor="@color/white" />
 
     </LinearLayout>

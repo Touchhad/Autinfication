@@ -5,14 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.ViewDebug;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.example.autinfication.Activity.LoginActivity;
+import com.example.autinfication.Service.VideoService;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,7 +29,9 @@ public class MovieActivity extends AppCompatActivity {
     ImageView Image;
     LinearLayout linearLayout;
     Context context;
+    VideoView videoView;
     private final static String PHOTO_URL = "http://cinema.areas.su/up/images/";
+    private final static String VIDEO_URL = "http://cinema.areas.su/up/video/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,7 @@ public class MovieActivity extends AppCompatActivity {
         TagName = (TextView) findViewById(R.id.tvTag);
         Image = (ImageView) findViewById(R.id.image1);
         age = (TextView) findViewById(R.id.age);
+        videoView = (VideoView) findViewById(R.id.videoView);
 
         Call<Movie> call = ApiClient.getMovieId().getDate(fName);
 
@@ -69,5 +77,34 @@ public class MovieActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+        Call<List<Video>> call1 = ApiClient.getVideo().getData(fName);
+        call1.enqueue(new Callback<List<Video>>() {
+            @Override
+            public void onResponse(Call<List<Video>> call, Response<List<Video>> response) {
+                if (response.isSuccessful()){
+                    List<Video> movie = response.body();
+
+                    if (TextUtils.isEmpty(movie.get(0).getPreview())){
+
+                        Toast.makeText(MovieActivity.this, "Отсутствует видео!", Toast.LENGTH_LONG).show();
+                    }else {
+                        videoView.setVideoPath(VIDEO_URL + movie.get(0).getPreview());
+                        videoView.start();
+                    }
+                }else{
+                    Toast.makeText(MovieActivity.this, response.errorBody().toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Video>> call, Throwable t) {
+                Toast.makeText(MovieActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+
     }
 }

@@ -72,11 +72,12 @@
 
         </LinearLayout>
 
-        <CheckBox
-            android:id="@+id/checkBox"
+        <VideoView
+            android:id="@+id/videoView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CheckBox" />
+            android:layout_margin="15dp" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

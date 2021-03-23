@@ -11,6 +11,10 @@ public class Movie {
     private String poster;
     private List<Tags> tags;
 
+
+
+
+
     public int getMovieId() {
         return movieId;
     }
